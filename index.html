@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome, Tamim</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(-45deg, #0f172a, #1e1b4b, #311042, #0f172a);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: #ffffff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      max-width: 650px;
+      width: 100%;
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 35px 25px;
+      border-radius: 24px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    }
+
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #38bdf8;
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+      margin-bottom: 15px;
+    }
+
+    .greeting {
+      font-size: 1.1rem;
+      color: #38bdf8;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .name {
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(to right, #38bdf8, #818cf8, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+      letter-spacing: -1px;
+    }
+
+    .bio {
+      font-size: 1rem;
+      color: #cbd5e1;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      padding: 0 10px;
+    }
+
+    .clock {
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: #f8fafc;
+      margin-bottom: 25px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .search-form {
+      width: 100%;
+      margin-bottom: 25px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 16px 24px;
+      font-size: 1.05rem;
+      border: 2px solid rgba(255, 255, 255, 0.15);
+      border-radius: 50px;
+      outline: none;
+      background: rgba(15, 23, 42, 0.6);
+      color: #ffffff;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .search-input::placeholder {
+      color: #94a3b8;
+    }
+
+    .search-input:focus {
+      border-color: #38bdf8;
+      background: rgba(15, 23, 42, 0.9);
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
+    }
+
+    .shortcuts {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .shortcut-card {
+      color: #cbd5e1;
+      text-decoration: none;
+      padding: 10px 18px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .shortcut-card:hover {
+      background: rgba(56, 189, 248, 0.2);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 480px) {
+      .name { font-size: 2.4rem; }
+      .clock { font-size: 1.8rem; }
+      .profile-img { width: 100px; height: 100px; }
+      .container { padding: 25px 15px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- প্রফাইল ছবি (Root folder-এর profile.jpg ফাইল) -->
+    <img src="profile.jpg" alt="Tamim Rahman" class="profile-img">
+
+    <div class="greeting" id="greeting">Welcome</div>
+    <div class="name">Tamim Rahman</div>
+    
+    <!-- আপনার সংক্ষিপ্ত পরিচিতি -->
+    <p class="bio">
+      Software Developer & Tech Enthusiast. Passionate about building modern web & mobile applications.
+    </p>
+
+    <div class="clock" id="clock">00:00:00</div>
+
+    <!-- সার্চ বক্স -->
+    <form class="search-form" action="https://www.google.com/search" method="get">
+      <input 
+        type="text" 
+        class="search-input" 
+        name="q" 
+        placeholder="Search Google or type a URL..." 
+        required 
+        autocomplete="off"
+        autofocus
+      >
+    </form>
+
+    <!-- কুইক নেভিগেশন লিংক -->
+    <div class="shortcuts">
+      <a href="https://www.facebook.com" class="shortcut-card">Facebook</a>
+      <a href="https://www.youtube.com" class="shortcut-card">YouTube</a>
+      <a href="https://github.com" class="shortcut-card">GitHub</a>
+      <a href="https://chatgpt.com" class="shortcut-card">ChatGPT</a>
+    </div>
+  </div>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      document.getElementById('clock').innerText = `${hours}:${minutes}:${seconds}`;
+
+      const hour = now.getHours();
+      let greetingText = "Good Evening";
+      
+      if (hour < 12) {
+        greetingText = "Good Morning";
+      } else if (hour < 18) {
+        greetingText = "Good Afternoon";
+      }
+      
+      document.getElementById('greeting').innerText = greetingText;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+
+</body>
+</html>
