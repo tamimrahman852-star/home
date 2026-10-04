@@ -1,214 +1,374 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome, Tamim</title>
+  <title>Google - Tamim Edition</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-family: 'Google Sans', -apple-system, BlinkMacSystemFont, Roboto, 'Segoe UI', Roboto, sans-serif;
     }
 
     body {
+      background-color: #202124;
+      color: #e8eaed;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      background: linear-gradient(-45deg, #0f172a, #1e1b4b, #311042, #0f172a);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
-      color: #ffffff;
       padding: 20px;
-      text-align: center;
     }
 
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .container {
-      max-width: 650px;
+    /* Top Navigation Header */
+    header {
       width: 100%;
-      backdrop-filter: blur(12px);
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 35px 25px;
-      border-radius: 24px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      padding: 10px 0;
+    }
+
+    .header-left {
+      display: flex;
+      gap: 20px;
+      font-size: 0.9rem;
+      color: #9aa0a6;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 15px;
     }
 
     .profile-img {
-      width: 120px;
-      height: 120px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid #38bdf8;
-      box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
-      margin-bottom: 15px;
+      border: 2px solid #8ab4f8;
+      cursor: pointer;
+      transition: transform 0.2s;
     }
 
-    .greeting {
-      font-size: 1.1rem;
-      color: #38bdf8;
-      letter-spacing: 1px;
-      margin-bottom: 5px;
-      text-transform: uppercase;
-      font-weight: 600;
+    .profile-img:hover {
+      transform: scale(1.05);
     }
 
-    .name {
-      font-size: 3rem;
-      font-weight: 800;
-      background: linear-gradient(to right, #38bdf8, #818cf8, #c084fc);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 10px;
-      letter-spacing: -1px;
-    }
-
-    .bio {
-      font-size: 1rem;
-      color: #cbd5e1;
-      line-height: 1.6;
-      margin-bottom: 20px;
-      padding: 0 10px;
-    }
-
-    .clock {
-      font-size: 2.2rem;
-      font-weight: 300;
-      color: #f8fafc;
-      margin-bottom: 25px;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .search-form {
+    /* Main Section */
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       width: 100%;
-      margin-bottom: 25px;
+      max-width: 750px;
+      margin-top: -30px;
+    }
+
+    /* Google Style Logo with Tamim's Name */
+    .google-logo {
+      font-size: 5rem;
+      font-weight: 700;
+      letter-spacing: -2px;
+      margin-bottom: 20px;
+      user-select: none;
+    }
+
+    .g-blue   { color: #4285f4; }
+    .g-red    { color: #ea4335; }
+    .g-yellow { color: #fbbc05; }
+    .g-green  { color: #34a853; }
+
+    /* Search Box */
+    .search-box {
+      width: 100%;
+      background: #303134;
+      border: 1px solid #5f6368;
+      border-radius: 24px;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      transition: background 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+
+    .search-box:hover, .search-box:focus-within {
+      background: #303134;
+      box-shadow: 0 1px 6px rgba(32,33,36,0.28);
+      border-color: rgba(223,225,229,0);
+    }
+
+    .search-icon {
+      color: #9aa0a6;
+      margin-right: 14px;
+      font-size: 1.1rem;
     }
 
     .search-input {
-      width: 100%;
-      padding: 16px 24px;
-      font-size: 1.05rem;
-      border: 2px solid rgba(255, 255, 255, 0.15);
-      border-radius: 50px;
+      flex: 1;
+      background: transparent;
+      border: none;
       outline: none;
-      background: rgba(15, 23, 42, 0.6);
-      color: #ffffff;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      color: #e8eaed;
+      font-size: 1.1rem;
     }
 
     .search-input::placeholder {
-      color: #94a3b8;
+      color: #9aa0a6;
     }
 
-    .search-input:focus {
-      border-color: #38bdf8;
-      background: rgba(15, 23, 42, 0.9);
-      box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
+    /* Developer Shortcuts Grid */
+    .dev-shortcuts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+      gap: 15px;
+      width: 100%;
+      margin-top: 35px;
     }
 
-    .shortcuts {
+    .shortcut-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: #e8eaed;
+      padding: 12px 8px;
+      border-radius: 12px;
+      transition: background 0.2s;
+    }
+
+    .shortcut-item:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .shortcut-icon {
+      width: 48px;
+      height: 48px;
+      background: #303134;
+      border-radius: 50%;
       display: flex;
       justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
+      align-items: center;
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+      color: #8ab4f8;
+      border: 1px solid #3c4043;
     }
 
-    .shortcut-card {
-      color: #cbd5e1;
-      text-decoration: none;
-      padding: 10px 18px;
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 12px;
+    .shortcut-label {
+      font-size: 0.8rem;
+      color: #bdc1c6;
+    }
+
+    /* Developer Dashboard Widgets */
+    .widgets-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      width: 100%;
+      margin-top: 30px;
+    }
+
+    .widget-card {
+      background: #2d2e31;
+      border: 1px solid #3c4043;
+      border-radius: 16px;
+      padding: 18px;
+      text-align: left;
+    }
+
+    .widget-title {
+      font-size: 0.85rem;
+      color: #8ab4f8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Quick Scratchpad */
+    .scratchpad {
+      width: 100%;
+      height: 70px;
+      background: #202124;
+      border: 1px solid #3c4043;
+      border-radius: 8px;
+      color: #e8eaed;
+      padding: 8px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.85rem;
+      resize: none;
+      outline: none;
+    }
+
+    .quote-text {
       font-size: 0.9rem;
-      transition: all 0.2s ease;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      color: #bdc1c6;
+      font-style: italic;
+      line-height: 1.4;
     }
 
-    .shortcut-card:hover {
-      background: rgba(56, 189, 248, 0.2);
-      color: #ffffff;
-      transform: translateY(-2px);
+    /* Footer */
+    footer {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+      border-top: 1px solid #3c4043;
+      color: #9aa0a6;
+      font-size: 0.85rem;
     }
 
-    @media (max-width: 480px) {
-      .name { font-size: 2.4rem; }
-      .clock { font-size: 1.8rem; }
-      .profile-img { width: 100px; height: 100px; }
-      .container { padding: 25px 15px; }
+    @media (max-width: 600px) {
+      .google-logo { font-size: 3.5rem; }
+      .widgets-container { grid-template-columns: 1fr; }
+      .dev-shortcuts { grid-template-columns: repeat(4, 1fr); }
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <!-- প্রফাইল ছবি (Root folder-এর profile.jpg ফাইল) -->
-    <img src="profile.JPG" alt="Tamim Rahman" class="profile-img">
+  <!-- Header -->
+  <header>
+    <div class="header-left">
+      <span id="time-display"><i class="fa-regular fa-clock"></i> 00:00:00</span>
+      <span id="greeting-display">Hello Developer</span>
+    </div>
+    <div class="header-right">
+      <a href="https://github.com" target="_blank" style="color: #9aa0a6; font-size: 1.2rem; margin-right: 10px;">
+        <i class="fa-brands fa-github"></i>
+      </a>
+      <img src="profile.JPG" alt="Tamim Rahman" class="profile-img" title="Tamim Rahman">
+    </div>
+  </header>
 
-    <div class="greeting" id="greeting">Welcome</div>
-    <div class="name">Tamim Rahman</div>
-    
-    <!-- আপনার সংক্ষিপ্ত পরিচিতি -->
-    <p class="bio">
-      Software Developer & Tech Enthusiast. Passionate about building modern web & mobile applications.
-    </p>
+  <!-- Main Area -->
+  <main>
+    <!-- Google Inspired Logo -->
+    <div class="google-logo">
+      <span class="g-blue">T</span><span class="g-red">a</span><span class="g-yellow">m</span><span class="g-blue">i</span><span class="g-green">m</span>
+    </div>
 
-    <div class="clock" id="clock">00:00:00</div>
-
-    <!-- সার্চ বক্স -->
-    <form class="search-form" action="https://www.google.com/search" method="get">
+    <!-- Search Form -->
+    <form class="search-box" action="https://www.google.com/search" method="get">
+      <i class="fa-solid fa-magnifying-glass search-icon"></i>
       <input 
         type="text" 
         class="search-input" 
         name="q" 
-        placeholder="Search Google or type a URL..." 
+        placeholder="Search Google or enter URL..." 
         required 
         autocomplete="off"
         autofocus
       >
     </form>
 
-    <!-- কুইক নেভিগেশন লিংক -->
-    <div class="shortcuts">
-      <a href="https://www.facebook.com" class="shortcut-card">Facebook</a>
-      <a href="https://www.youtube.com" class="shortcut-card">YouTube</a>
-      <a href="https://github.com" class="shortcut-card">GitHub</a>
-      <a href="https://chatgpt.com" class="shortcut-card">ChatGPT</a>
+    <!-- Developer Shortcuts -->
+    <div class="dev-shortcuts">
+      <a href="https://github.com" class="shortcut-item">
+        <div class="shortcut-icon"><i class="fa-brands fa-github"></i></div>
+        <span class="shortcut-label">GitHub</span>
+      </a>
+      <a href="https://stackoverflow.com" class="shortcut-item">
+        <div class="shortcut-icon"><i class="fa-brands fa-stack-overflow"></i></div>
+        <span class="shortcut-label">StackOverflow</span>
+      </a>
+      <a href="https://chatgpt.com" class="shortcut-item">
+        <div class="shortcut-icon"><i class="fa-solid fa-robot"></i></div>
+        <span class="shortcut-label">ChatGPT</span>
+      </a>
+      <a href="https://leetcode.com" class="shortcut-item">
+        <div class="shortcut-icon"><i class="fa-solid fa-code"></i></div>
+        <span class="shortcut-label">LeetCode</span>
+      </a>
+      <a href="https://dev.to" class="shortcut-item">
+        <div class="shortcut-icon"><i class="fa-brands fa-dev"></i></div>
+        <span class="shortcut-label">Dev.to</span>
+      </a>
+      <a href="https://youtube.com" class="shortcut-item">
+        <div class="shortcut-icon"><i class="fa-brands fa-youtube"></i></div>
+        <span class="shortcut-label">YouTube</span>
+      </a>
     </div>
-  </div>
+
+    <!-- Dev Widgets -->
+    <div class="widgets-container">
+      <!-- Quick Scratchpad Widget -->
+      <div class="widget-card">
+        <div class="widget-title">
+          <i class="fa-solid fa-pen-to-square"></i> Quick Dev Scratchpad
+        </div>
+        <textarea id="scratchpad" class="scratchpad" placeholder="Type quick code or notes here... (Auto-saved)"></textarea>
+      </div>
+
+      <!-- Dev Motivation Quote Widget -->
+      <div class="widget-card">
+        <div class="widget-title">
+          <i class="fa-solid fa-terminal"></i> Dev Thoughts
+        </div>
+        <div class="quote-text" id="quote">
+          "First, solve the problem. Then, write the code." – John Johnson
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div>Tamim Rahman | Software Developer Workstation</div>
+    <div>Engineered with HTML, CSS & JS</div>
+  </footer>
 
   <script>
-    function updateClock() {
+    // Real-time Clock & Greeting
+    function updateHeaderInfo() {
       const now = new Date();
-      
       const hours = String(now.getHours()).padStart(2, '0');
       const minutes = String(now.getMinutes()).padStart(2, '0');
       const seconds = String(now.getSeconds()).padStart(2, '0');
-      document.getElementById('clock').innerText = `${hours}:${minutes}:${seconds}`;
+      
+      document.getElementById('time-display').innerHTML = `<i class="fa-regular fa-clock"></i> ${hours}:${minutes}:${seconds}`;
 
       const hour = now.getHours();
-      let greetingText = "Good Evening";
-      
-      if (hour < 12) {
-        greetingText = "Good Morning";
-      } else if (hour < 18) {
-        greetingText = "Good Afternoon";
-      }
-      
-      document.getElementById('greeting').innerText = greetingText;
+      let greeting = "Happy Coding, Tamim!";
+      if (hour < 12) greeting = "Good Morning, Tamim!";
+      else if (hour < 18) greeting = "Good Afternoon, Tamim!";
+      else greeting = "Good Evening, Tamim!";
+
+      document.getElementById('greeting-display').innerText = greeting;
     }
 
-    setInterval(updateClock, 1000);
-    updateClock();
+    setInterval(updateHeaderInfo, 1000);
+    updateHeaderInfo();
+
+    // Auto-save Scratchpad using LocalStorage
+    const scratchpad = document.getElementById('scratchpad');
+    scratchpad.value = localStorage.getItem('tamim_dev_notes') || '';
+
+    scratchpad.addEventListener('input', () => {
+      localStorage.setItem('tamim_dev_notes', scratchpad.value);
+    });
+
+    // Random Dev Quotes
+    const quotes = [
+      '"First, solve the problem. Then, write the code." – John Johnson',
+      '"Make it work, make it right, make it fast." – Kent Beck',
+      '"Clean code always looks like it was written by someone who cares." – Robert C. Martin',
+      '"Simplicity is prerequisite for reliability." – Edsger W. Dijkstra',
+      '"Talk is cheap. Show me the code." – Linus Torvalds'
+    ];
+
+    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    document.getElementById('quote').innerText = randomQuote;
   </script>
 
 </body>
